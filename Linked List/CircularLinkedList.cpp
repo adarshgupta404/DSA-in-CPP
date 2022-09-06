@@ -27,7 +27,6 @@ class Node
 int main()
 {
 
-
 getch();
 return 0;
 }
