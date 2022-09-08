@@ -57,6 +57,7 @@ void createList(Node* &tail)
     addEmpty(tail,d);
     for (int i = 1; i < n; i++)
     {
+        printf("Enter the data at 1: %d", i);
         InsertAtTail(tail);
     }
 }
@@ -97,8 +98,8 @@ void InsertAtPos(Node *&tail)
     }
     newNode->next = p->next;
     p->next = newNode;
-    if(p == tail) 
-        tail =  tail->next; 
+    if(p == tail)
+        tail =  tail->next;
 }
 
 int No_of_Nodes(Node *&tail)
@@ -107,7 +108,7 @@ int No_of_Nodes(Node *&tail)
     Node *temp = tail->next;
     while (temp != tail)
     {
-        cnt++; 
+        cnt++;
         temp = temp->next;
     }
     return cnt;
@@ -143,17 +144,17 @@ void delete_intermediate(Node* &tail)
     {
         delete_firstNode(tail);
         return;
-    }    
-    
+    }
+
     int l = No_of_Nodes(tail);
     if(pos==l)
     {
         delete_lastNode(tail);
         return;
     }
-    
+
     Node* temp = tail->next;
-    while (pos>2)  
+    while (pos>2)
     {
         temp = temp->next;
         pos--;
