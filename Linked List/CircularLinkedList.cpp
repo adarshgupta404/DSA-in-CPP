@@ -204,9 +204,7 @@ void reverse(Node *&tail)
 
 int main()
 {
-    int d;
-    Node *node1 = NULL;
-    Node *tail = node1;
+    Node *tail = NULL;
     cout << "LINKED LIST MENU" << endl
              << "1.CREATE" << endl
              << "2.DISPLAY" << endl
