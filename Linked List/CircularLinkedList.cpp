@@ -165,7 +165,7 @@ int No_of_Nodes(Node *&tail)
     Node *temp = tail->next;
     while (temp != tail)
     {
-        cnt++;
+        cnt++; 
         temp = temp->next;
     }
     return cnt;
