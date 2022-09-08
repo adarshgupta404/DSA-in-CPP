@@ -35,6 +35,7 @@ void InsertAtTail(Node *&tail)
     tail->next = newNode;
     tail= newNode;
 }
+
 void addEmpty(Node*& tail, int data)
 {
     Node* newNode = new Node(data);
@@ -73,35 +74,33 @@ void display(Node *&tail)
     }while(temp != tail->next);
     printf("\n");
 }
-/*
-void InsertAtPos(Node *&tail, int pos)
+
+void InsertAtPos(Node *&tail)
 {
+    int pos,d;
     if (pos == 1)
     {
-        InsertAtHead(head);
+        InsertAtHead(tail);
         return;
     }
 
-    int cnt = 1;
-    Node *temp = head;
-    while (cnt < pos)
+    printf("\nEnter the position you want: ");
+    scanf("%d", &pos);
+    printf("\nEnter the data you want at position %d: ",pos);
+    scanf("%d", &d);
+    Node* p = tail;
+    Node* newNode = new Node(d);
+    while (pos>1)
     {
-        temp = temp->next;
-        cnt++;
+        p = p->next;
+        pos--;
     }
-
-    if (temp->next == NULL)
-    {
-        InsertAtTail(tail);
-        return;
-    }
-    int d;
-    cin >> d;
-    Node *nodeToInsert = new Node(d);
-    nodeToInsert->next = temp->next;
-    temp->next = nodeToInsert;
+    newNode->next = p->next;
+    p->next = newNode;
+    if(p == tail) 
+        tail =  tail->next; 
 }
-*/
+
 void deleteNode(Node *&head, int pos)
 {
     if (pos == 1)
@@ -145,35 +144,6 @@ void search(Node *&head, int d)
     cout << "\nNot Present.\n";
 }
 
-void sort(Node *head)
-{
-    Node *current = head, *index = NULL;
-    int temp;
-    if (head == NULL)
-    {
-        return;
-    }
-    else
-    {
-        while (current != NULL)
-        {
-            // index points to the node next to current
-            index = current->next;
-
-            while (index != NULL)
-            {
-                if (current->data > index->data)
-                {
-                    temp = current->data;
-                    current->data = index->data;
-                    index->data = temp;
-                }
-                index = index->next;
-            }
-            current = current->next;
-        }
-    }
-}
 
 void reverse(Node *&head)
 {
@@ -189,11 +159,11 @@ void reverse(Node *&head)
     head = before;
 }
 
-int No_of_Nodes(Node *&head)
+int No_of_Nodes(Node *&tail)
 {
-    int cnt = 0;
-    Node *temp = head;
-    while (temp != NULL)
+    int cnt = 1;
+    Node *temp = tail->next;
+    while (temp != tail)
     {
         cnt++;
         temp = temp->next;
@@ -237,13 +207,10 @@ int main()
         case 4:
             InsertAtHead(tail);
             break;
-       /* case 5:
-            int loc;
-            printf("Enter the location to insert node: ");
-            scanf("%d", &loc);
-            InsertAtPos(tail, loc);
+        case 5:
+            InsertAtPos(tail);
             break;
-        case 6:
+        /*case 6:
             printf("Enter the position of element to be delete: ");
             int pos;
             scanf("%d", &pos);
@@ -254,18 +221,16 @@ int main()
             int num;
             cin >> num;
             search(head, num);
-            break;
+            break;*/
         case 8:
-            sort(head);
-            display(head);
+            cout << "No of Nodes in the linked list is " << No_of_Nodes(tail) << "." << endl;
             break;
         case 9:
-            reverse(head);
-            display(head);
+            reverse(tail);
+            display(tail);
             break;
         case 10:
-            cout << "No of Nodes in the linked list is " << No_of_Nodes(head) << "." << endl;
-            break;*/
+            
         default:
             goto end;
         }
