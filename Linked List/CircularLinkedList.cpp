@@ -16,36 +16,66 @@ public:
     //~Node();
 };
 
-void InsertAtHead(Node *&head)
+void InsertAtHead(Node *&tail)
 {
     int d;
     cin >> d;
     Node *temp = new Node(d);
-    temp->next = head;
-    head = temp;
+    temp->next = tail->next;
+    tail->next = temp;
 }
 
 void InsertAtTail(Node *&tail)
 {
     int d;
     cin >> d;
-    Node *temp = new Node(d);
-    tail->next = temp;
-    tail = temp;
+    Node *newNode = new Node(d);
+    newNode->data = d;
+    newNode->next = tail->next;
+    tail->next = newNode;
+    tail= newNode;
 }
 
-void display(Node *&head)
+void addEmpty(Node*& tail, int data)
 {
-    Node *p = head;
-    while (p != NULL)
+    Node* newNode = new Node(data);
+    newNode->data = data;
+    tail = newNode;
+    tail->next = tail;
+}
+
+void createList(Node* &tail)
+{
+    printf("Enter the number of nodes you want to insert: ");
+    int n;
+    scanf("%d", &n);
+    if (n == 0)
+        return;
+    printf("Enter the data at 1: ");
+    int d;
+    scanf("%d", &d);
+    addEmpty(tail,d);
+    for (int i = 1; i < n; i++)
     {
-        printf("[%d]--->", p->data);
-        p = p->next;
+        InsertAtTail(tail);
     }
+}
+
+void display(Node *&tail)
+{
+    if (tail == NULL) {
+        printf("The list is empty");
+        return;
+    }
+    Node* temp = tail->next;
+    do{
+        printf("[%d]--->",temp->data);
+        temp = temp->next;
+    }while(temp != tail->next);
     printf("\n");
 }
-
-void InsertAtPos(Node *&head, Node *&tail, int pos)
+/*
+void InsertAtPos(Node *&tail, int pos)
 {
     if (pos == 1)
     {
@@ -72,7 +102,7 @@ void InsertAtPos(Node *&head, Node *&tail, int pos)
     nodeToInsert->next = temp->next;
     temp->next = nodeToInsert;
 }
-
+*/
 void deleteNode(Node *&head, int pos)
 {
     if (pos == 1)
@@ -175,15 +205,9 @@ int No_of_Nodes(Node *&head)
 int main()
 {
     int d;
-    cout << "Enter 1st Element of Linked List: ";
-    cin >> d;
-    Node *node1 = new Node(d);
-    Node *head = node1;
+    Node *node1 = NULL;
     Node *tail = node1;
-    while (true)
-    {
-        int a;
-        cout << "LINKED LIST MENU" << endl
+    cout << "LINKED LIST MENU" << endl
              << "1.CREATE" << endl
              << "2.DISPLAY" << endl
              << "3.INSERT_END" << endl
@@ -195,33 +219,30 @@ int main()
              << "9.REVERSE" << endl
              << "10.NO OF NODES" << endl
              << "Any key-EXIT" << endl;
+    while (true)
+    {
+        int a;
         printf("Enter your choice: ");
         scanf("%d", &a);
         switch (a)
         {
         case 1:
-            printf("Enter number of Nodes: ");
-            int n;
-            scanf("%d", &n);
-            for (int i = 1; i < n; i++)
-            {
-                InsertAtTail(tail);
-            }
+            createList(tail);
             break;
         case 2:
-            display(head);
+            display(tail);
             break;
         case 3:
             InsertAtTail(tail);
             break;
         case 4:
-            InsertAtHead(head);
+            InsertAtHead(tail);
             break;
-        case 5:
+       /* case 5:
             int loc;
             printf("Enter the location to insert node: ");
             scanf("%d", &loc);
-            InsertAtPos(head, tail, loc);
+            InsertAtPos(tail, loc);
             break;
         case 6:
             printf("Enter the position of element to be delete: ");
@@ -229,7 +250,7 @@ int main()
             scanf("%d", &pos);
             deleteNode(head, pos);
             break;
-        case 7:
+        /*case 7:
             cout << "Enter the element to be searched: ";
             int num;
             cin >> num;
@@ -245,7 +266,7 @@ int main()
             break;
         case 10:
             cout << "No of Nodes in the linked list is " << No_of_Nodes(head) << "." << endl;
-            break;
+            break;*/
         default:
             goto end;
         }
