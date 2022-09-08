@@ -57,7 +57,7 @@ void createList(Node* &tail)
     addEmpty(tail,d);
     for (int i = 1; i < n; i++)
     {
-        printf("Enter the data at 1: %d", i);
+        printf("Enter the data at %d: ", i);
         InsertAtTail(tail);
     }
 }
