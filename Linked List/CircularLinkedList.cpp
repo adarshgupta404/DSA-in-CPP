@@ -35,7 +35,6 @@ void InsertAtTail(Node *&tail)
     tail->next = newNode;
     tail= newNode;
 }
-
 void addEmpty(Node*& tail, int data)
 {
     Node* newNode = new Node(data);
