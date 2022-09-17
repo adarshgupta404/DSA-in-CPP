@@ -216,7 +216,7 @@ int main()
              << "8.DELETE_INTERMEDIATE" << endl
              << "9.NO. OF NODES" << endl
              << "10.REVERSE" << endl
-             << "11.NO OF NODES" << endl
+             << "11.SEARCH_NODE" << endl
              << "Any key-EXIT" << endl;
     while (true)
     {
@@ -259,7 +259,7 @@ int main()
             cout << "Number of Nodes in the linked list is " << No_of_Nodes(tail) << "." << endl;
             break;
         case 10:
-            cout<<"After Reversing: ";
+            cout<<"After Reversing: \n";
             reverse(tail);
             display(tail);
             break;
