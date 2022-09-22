@@ -2,16 +2,7 @@
 #include<iostream>
 #include<conio.h>
 using namespace std;
-void reverse(int arr[], int n)
-{
-    int l = 0, h = n-1;
-    while (l<=h)
-    {   
-        swap(arr[l], arr[h]);
-        l++,h--;
-    }
-    return;
-}
+
 vector<int> twoSum(int* ar1, int* ar2, int n, int m)
 {
     vector<int> sum;
@@ -24,7 +15,7 @@ vector<int> twoSum(int* ar1, int* ar2, int n, int m)
     {
         s = c;
         if(i>=0)
-            s = s +ar1[i];
+            s = s + ar1[i];
         if(j>=0)
             s = s + ar2[j];
         c = s/10;        
@@ -43,7 +34,6 @@ vector<int> twoSum(int* ar1, int* ar2, int n, int m)
     {
         sum.push_back(res[i]);
     }
-    
     return sum;
 }
 int main()
