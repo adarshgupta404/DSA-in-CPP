@@ -21,7 +21,6 @@ vector<int> twoSum(int* ar1, int* ar2, int n, int m)
         c = s/10;        
         g = s%10;
         res[k] = g;
-        
         j--;
         k--;
         i--;
@@ -56,7 +55,7 @@ for (int i = 0; i < n; i++)
     cout<<ar1[i]<<" ";
 }
 cout<<"\n+ ";
-for (int i = 0; i < n-m; i++)
+for (int i = 0; i < abs(n-m); i++)
 {
     cout<<"  ";
 }
@@ -65,7 +64,12 @@ for (int i = 0; i < m; i++)
 {
     cout<<ar2[i]<<" ";
 }
-cout<<endl<<"-------------"<<endl;
+cout<<endl;
+for (int i = 0; i < max(n,m) + 1 ; i++)
+{
+    cout<<"--";
+}
+cout<<endl;
 vector<int> v = twoSum(ar1,ar2,n,m);
 cout<<"  ";
 for(auto &i : v)
