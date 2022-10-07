@@ -6,10 +6,15 @@ using namespace std;
 #define M 5
 int STACK[M];
 int top = -1;
-
-void push(int i)
+isfull()
 {
     if(top==M-1)
+        return 1;
+    return 0;
+}
+void push(int i)
+{
+    if(isfull)
     {
         cout<<"Stack Overflow"<<endl;
         return;
