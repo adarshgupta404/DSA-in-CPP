@@ -27,7 +27,7 @@ vector<int> twoSum(int* ar1, int* ar2, int n, int m)
     }
     if(c!=0)
     {
-        cout<<c<<" ";
+        cout<<c<<"";
     }
     for (int i = 0; i < max(n,m); i++)
     {
@@ -71,7 +71,7 @@ for (int i = 0; i < max(n,m) + 1 ; i++)
 }
 cout<<endl;
 vector<int> v = twoSum(ar1,ar2,n,m);
-cout<<"  ";
+cout<<" ";
 for(auto &i : v)
     cout<<i<<" ";
 getch();
