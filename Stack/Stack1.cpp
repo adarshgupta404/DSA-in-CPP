@@ -6,7 +6,7 @@ using namespace std;
 #define M 5
 int STACK[M];
 int top = -1;
-isfull()
+int isfull()
 {
     if(top==M-1)
         return 1;
