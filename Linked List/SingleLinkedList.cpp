@@ -109,7 +109,7 @@ void search(Node *&head, int d)
         if (p->data == d)
         {
             printf("%d is present at postion %d.\n", d, cnt);
-            return;
+            break;
         }
         p = p->next;
     }
