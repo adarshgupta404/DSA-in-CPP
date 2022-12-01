@@ -274,7 +274,9 @@ int main()
         }
     }
 end:
+    
     cout << endl;
+    
     getch();
     return 0;
 }
